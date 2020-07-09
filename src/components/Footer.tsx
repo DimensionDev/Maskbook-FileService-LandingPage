@@ -1,6 +1,6 @@
 import React from 'react';
 
-const legal = 'https://partner.maskbook.com/arweave/file-service/';
+const legal = 'https://legal.maskbook.com/arweave/file-service/';
 
 export default React.memo(() => (
   <nav>
