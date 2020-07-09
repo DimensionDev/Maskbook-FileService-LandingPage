@@ -1,4 +1,8 @@
-# Maskbook File Service (by Arweave)
+# Maskbook Plugin "File Service"
+
+## Introduction
+
+This repo includes the "Landing Page" component of the [Maskbook](https://github.com/DimensionDev/Maskbook) Plugin "File Service".
 
 ## Technology Demo
 
@@ -9,3 +13,9 @@
 | mp4    | <https://arweave.net/9JgBCn8uaToqiTbugQ43yRuQioLbvbeTA5mSLEbnYt8#sample> |
 | text   | <https://arweave.net/307hbRQY_nKIrJZP6MxGemQd25F8NnTQHAuAlzN3XaI#sample> |
 | pdf    | <https://arweave.net/PWvhvpaoHNPOhSCyW-e_jRqgPEESELEy8T69AjTlcYk#sample> |
+
+## Copyright
+
+Copyright (c) 2020 Dimension.im & various contributors.
+
+Published under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
