@@ -1,0 +1,112 @@
+$width: 37.5rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: $width;
+  padding: 2.5rem 1rem;
+}
+
+.container > h1 {
+  width: 100%;
+  margin: 0;
+
+  user-select: none;
+  text-align: center;
+
+  color: #fff;
+
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  > span {
+    display: block;
+
+    margin-top: 0.625rem;
+
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.2;
+  }
+}
+
+.container > nav {
+  user-select: none;
+  text-align: center;
+
+  color: #fff;
+
+  font-size: 0.875rem;
+  line-height: 1.8;
+  i {
+    font-style: normal;
+  }
+  b {
+    display: block;
+
+    margin-bottom: 1.875rem;
+
+    text-align: center;
+
+    font-size: 1.25rem;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  a {
+    display: inline-block;
+
+    text-decoration: none;
+
+    color: #fff;
+  }
+  span {
+    margin: 0 1ex;
+  }
+}
+
+@media screen and (max-width: $width) {
+  .container {
+    flex: 1;
+
+    width: 100%;
+    > h1 > span {
+      margin-bottom: 2.5rem;
+    }
+    > nav > b {
+      margin-bottom: 1.25rem;
+
+      font-size: 1rem;
+      span {
+        display: none;
+      }
+      i {
+        display: block;
+      }
+    }
+    > nav > p {
+      span {
+        display: none;
+      }
+      a {
+        display: block;
+      }
+    }
+  }
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  margin: 3rem 0;
+  padding: 1.875rem 1.25rem;
+
+  border-radius: 0.75rem;
+  background: #fff;
+}

@@ -1,0 +1,25 @@
+.buttons {
+  position: relative;
+
+  display: flex;
+
+  margin-bottom: 3rem;
+}
+
+.preview {
+  position: absolute;
+  bottom: -3rem;
+
+  width: 100%;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: #1c68f3;
+  background-color: transparent;
+  &:disabled {
+    cursor: not-allowed;
+
+    color: #c4c4c4;
+  }
+}

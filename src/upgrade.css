@@ -1,0 +1,29 @@
+#upgrade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 50em;
+  height: 5em;
+  margin: auto;
+
+  user-select: none;
+  text-align: center;
+
+  color: #000;
+  border-radius: 0.5em;
+  background: #ffee44;
+
+  font-family: monospace, monospace;
+  line-height: 2.5;
+}
+
+#upgrade p {
+  margin: 0;
+}
+
+#upgrade a {
+  color: #000;
+}

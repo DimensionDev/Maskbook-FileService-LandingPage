@@ -1,0 +1,29 @@
+.info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.icon {
+  display: block;
+
+  width: 6rem;
+  height: 7.5rem;
+
+  background-image: url(./icons/file-general.svg);
+}
+
+.name {
+  width: 100%;
+
+  text-align: center;
+  word-break: break-all;
+}
+
+.size {
+  margin: 0;
+}
