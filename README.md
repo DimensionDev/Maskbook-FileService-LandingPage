@@ -16,6 +16,6 @@ This repo includes the "Landing Page" component of the [Maskbook](https://github
 
 ## Copyright
 
-Copyright (c) 2020 Dimension.im & various contributors.
+Copyright &copy; 2020 Dimension.im &amp; various contributors.
 
 Published under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
