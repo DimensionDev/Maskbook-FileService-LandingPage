@@ -1,14 +1,17 @@
 #upgrade {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
 
+  margin-right: -50%;
+
+  transform: translate(-50%, -50%);
+}
+
+#upgrade main {
   display: table;
 
-  max-width: 50em;
-  margin: auto 1em;
+  margin: 1em;
 
   user-select: none;
   text-align: center;
