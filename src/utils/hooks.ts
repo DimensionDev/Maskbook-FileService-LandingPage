@@ -3,6 +3,7 @@ interface Metadata {
   size: number;
   link: string;
   keyHash: string;
+  createdAt: string;
   mime: string;
 }
 

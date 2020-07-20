@@ -10,6 +10,7 @@
 interface ILocals {
     "icon": string;
     "info": string;
+    "meta": string;
     "name": string;
     "size": string;
     [name: string]: string;
