@@ -1,7 +1,7 @@
 {
   "name": "@dimensiondev/arweave-landing-page",
   "private": true,
-  "license": "AGPL",
+  "license": "AGPL-3.0-or-later",
   "author": "Septs",
   "scripts": {
     "build": "env-cmd -e production webpack",
