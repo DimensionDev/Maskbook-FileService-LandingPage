@@ -5,6 +5,7 @@
   "author": "Septs",
   "scripts": {
     "build": "env-cmd -e production webpack",
+    "lint": "eslint --fix",
     "start": "env-cmd -e development webpack-dev-server"
   },
   "dependencies": {
