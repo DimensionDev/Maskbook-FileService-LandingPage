@@ -8,7 +8,7 @@
     "start": "env-cmd -e development webpack-dev-server"
   },
   "dependencies": {
-    "@dimensiondev/common-protocols": "^1.6.0",
+    "@dimensiondev/common-protocols": "^1.6.0-33",
     "@msgpack/msgpack": "^1.12.2",
     "classnames": "^2.2.6",
     "domready": "^1.0.8",
