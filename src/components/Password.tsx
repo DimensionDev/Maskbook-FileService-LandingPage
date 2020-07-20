@@ -42,7 +42,7 @@ const Password: React.FC = () => {
       window.removeEventListener('message', onMessage);
     };
   }, []);
-  if (metadata.keyHash === undefined) {
+  if (metadata.keyHash === undefined || metadata.keyHash === null) {
     history.replace('/download');
   }
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

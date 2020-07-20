@@ -10,6 +10,7 @@
 interface ILocals {
     "box": string;
     "container": string;
+    "hidden": string;
     [name: string]: string;
 }
 declare const locals: ILocals;

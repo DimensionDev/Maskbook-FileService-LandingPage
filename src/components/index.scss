@@ -56,11 +56,14 @@ $width: 37.5rem;
     line-height: 1.5;
   }
   a {
-    display: inline-block;
+    display: block;
 
     text-decoration: none;
 
     color: #fff;
+  }
+  a.hidden {
+    color: rgba(#fff, 0.3);
   }
   span {
     margin: 0 1ex;
