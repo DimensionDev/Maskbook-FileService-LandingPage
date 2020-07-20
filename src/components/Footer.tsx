@@ -15,7 +15,7 @@ export default React.memo(() => (
       Legal Documents (Privacy, Copyright, etc)
     </a>
     <a className={locals.hidden} href={repo}>
-      Generated on {process.env.COMMIT_DATE}
+      Generator version {process.env.COMMIT_DATE}
     </a>
   </nav>
 ));
