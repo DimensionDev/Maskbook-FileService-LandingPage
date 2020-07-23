@@ -10,7 +10,7 @@ export default React.memo(() => {
       <p className={locals.name}>{metedata?.name}</p>
       <p className={locals.meta}>
         <span>{formatFileSize(metedata?.size)}</span>
-        <span>&nbps;&nbps;</span>
+        <span>&nbsp;&nbsp;</span>
         <span>{formatDateTime(metedata?.createdAt)}</span>
       </p>
     </section>
