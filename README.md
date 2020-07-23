@@ -6,6 +6,10 @@
 
 This repo includes the "Landing Page" component of the [Maskbook](https://github.com/DimensionDev/Maskbook) Plugin "File Service".
 
+## Issues
+
+All discussions should happen at [Maskbook-Talks](https://github.com/DimensionDev/Maskbook-Talks).
+
 ## Technology Demo
 
 | Format | Link                                                                     |
