@@ -1,5 +1,7 @@
 # Maskbook Plugin "File Service" Component "Landing Page"
 
+![Build](https://github.com/DimensionDev/Maskbook-FileService-LandingPage/workflows/Build/badge.svg)
+
 ## Introduction
 
 This repo includes the "Landing Page" component of the [Maskbook](https://github.com/DimensionDev/Maskbook) Plugin "File Service".
