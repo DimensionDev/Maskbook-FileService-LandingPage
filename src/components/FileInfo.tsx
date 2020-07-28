@@ -1,5 +1,6 @@
 import React from 'react';
-import { formatFileSize, useMetadata } from '../utils';
+import { useMetadata } from '../Metadata';
+import { formatFileSize } from '../utils';
 import locals from './FileInfo.scss';
 
 export default React.memo(() => {

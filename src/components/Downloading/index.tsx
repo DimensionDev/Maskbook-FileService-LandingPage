@@ -2,7 +2,7 @@ import { Attachment } from '@dimensiondev/common-protocols';
 import classNames from 'classnames';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { useMetadata } from '../../utils';
+import { useMetadata } from '../../Metadata';
 import { box, button } from '../common.scss';
 import { useDownload } from './hooks';
 import locals from './index.scss';
@@ -25,12 +25,12 @@ const Downloading: React.FC = () => {
         const key = location.state?.key;
         try {
           const input = await Attachment.decode(key, encoded);
-          history.replace('/downloaded', {
+          history.push('/downloaded', {
             name: metadata.name,
             blob: new Blob([input.block], { type: input.mime }),
           });
         } catch {
-          history.replace('/error', {
+          history.push('/error', {
             type: 'save',
             message: 'Decyption failed.',
             key,
@@ -38,7 +38,7 @@ const Downloading: React.FC = () => {
         }
       },
       onNetworkError(error) {
-        history.replace('/error', {
+        history.push('/error', {
           type: 'download',
           message: error.message,
           key: location.state?.key,

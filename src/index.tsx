@@ -7,12 +7,15 @@ import Entry from './components';
 import 'normalize.css/normalize.css';
 import './upgrade.css';
 import locals from './base.scss';
+import { MetadataProvider } from './Metadata';
 
 ready(() => {
   const entry = (
-    <MemoryRouter>
-      <Entry />
-    </MemoryRouter>
+    <MetadataProvider>
+      <MemoryRouter>
+        <Entry />
+      </MemoryRouter>
+    </MetadataProvider>
   );
 
   const container = document.createElement('main');

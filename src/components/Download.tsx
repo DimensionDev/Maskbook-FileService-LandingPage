@@ -7,7 +7,7 @@ import locals from './Download.scss';
 const Download: React.FC = () => {
   const history = useHistory();
   const onStart = () => {
-    history.replace('/downloading', history.location.state);
+    history.push('/downloading', history.location.state);
   };
   return (
     <section className={box}>

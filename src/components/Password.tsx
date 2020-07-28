@@ -1,65 +1,55 @@
-import { Attachment } from '@dimensiondev/common-protocols';
 import classNames from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
-import { base64ToUint8Array, bufferEqual, useMetadata } from '../utils';
+import usePromise from 'react-use-promise';
+import { Metadata, useMetadata } from '../Metadata';
+import {
+  base64ToUint8Array,
+  encodeText,
+  useMessage,
+  useTimeout,
+} from '../utils';
 import { box, button } from './common.scss';
 import locals from './Password.scss';
 
+const INPUT_NAME = 'file-key';
+const MESSAGE_TRYING = 'Trying to retrieve automatically...';
+const MESSAGE_FAILED = 'File Key incorrect, try another';
+
 const Password: React.FC = () => {
-  const metadata = useMetadata();
+  const meta = useMetadata();
   const history = useHistory();
-  const [input, onInput] = React.useState('');
-  const [error, setError] = React.useState(
-    'Trying to retrieve automatically...',
-  );
-  React.useEffect(() => {
-    const hash = location.hash.slice(1);
-    if (hash.length !== 0) {
-      const key = new TextEncoder().encode(String(hash));
-      isKey(metadata.keyHash, key).then(() =>
-        history.replace('/download', { key }),
-      );
+  const [error, setError] = React.useState(MESSAGE_TRYING);
+  const [userKey, setUserKey] = React.useState(location.hash.slice(1));
+  usePromise(async () => {
+    const key = encodeText(userKey);
+    if (meta.signed === null) {
+      history.push('/download');
+    } else if (userKey.length === 0) {
+      return;
+    } else if (await verify(meta, key)) {
+      history.push('/downloading', { key });
+    } else {
+      setError(MESSAGE_FAILED);
     }
+  }, [userKey]);
+  useMessage((event) => setUserKey(String(event.data)));
+  useTimeout(() => setError(`${MESSAGE_TRYING} Not Found.`), 20 * 1000);
 
-    const onMessage = async (event: MessageEvent) => {
-      const key = base64ToUint8Array(String(event.data));
-      if (await isKey(metadata.keyHash, key)) {
-        history.replace('/downloading', { key });
-      } else {
-        setError('File Key incorrect, try another');
-      }
-    };
-    window.addEventListener('message', onMessage);
-    const removeListener = () => {
-      setError('Trying to retrieve automatically... Not Found.');
-      window.removeEventListener('message', onMessage);
-    };
-    const timeoutId = setTimeout(removeListener, 20 * 1000);
-
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('message', onMessage);
-    };
-  }, []);
-  if (metadata.keyHash === undefined || metadata.keyHash === null) {
-    history.replace('/download');
-  }
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const key = new TextEncoder().encode(input);
-    if (await isKey(metadata.keyHash, key)) {
-      history.replace('/downloading', { key });
-    } else {
-      setError('File Key incorrect, try another');
+    event.stopPropagation();
+    const element = event.currentTarget.elements.namedItem(INPUT_NAME);
+    if (element instanceof HTMLInputElement) {
+      setUserKey(element.value);
     }
   };
+
   return (
     <form className={classNames(box, locals.form)} onSubmit={onSubmit}>
       <label>
         <input
-          value={input}
-          onChange={(event) => onInput(event.currentTarget.value)}
+          name={INPUT_NAME}
           type='text'
           placeholder='Input File Key here...'
           spellCheck={false}
@@ -78,10 +68,12 @@ const Password: React.FC = () => {
   );
 };
 
-async function isKey(keyHash: string, key: Uint8Array) {
-  const expected = base64ToUint8Array(keyHash);
-  const hash = await Attachment.checksum(key);
-  return bufferEqual(expected, hash);
+async function verify(meta: Metadata, fileKey: Uint8Array) {
+  const [signed, keyData] = meta.signed.map(base64ToUint8Array);
+  const algo: HmacImportParams = { name: 'HMAC', hash: { name: 'SHA-256' } };
+  const usages: KeyUsage[] = ['sign', 'verify'];
+  const key = await crypto.subtle.importKey('raw', keyData, algo, true, usages);
+  return crypto.subtle.verify(algo, key, signed, fileKey);
 }
 
 export default Password;

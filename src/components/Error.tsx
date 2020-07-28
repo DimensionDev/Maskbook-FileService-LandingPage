@@ -12,7 +12,7 @@ const Error: React.FC = () => {
   const onClick = () => {
     const key = location.state?.key;
     if (type === 'network') {
-      history.replace('/downloading', { key });
+      history.push('/downloading', { key });
     }
   };
   return (
