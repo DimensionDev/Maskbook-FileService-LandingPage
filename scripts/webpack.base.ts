@@ -12,7 +12,7 @@ const configuration: webpack.Configuration = {
   plugins: [
     new CSSPlugin({ filename: '[name].css' }),
     new webpack.EnvironmentPlugin({
-      COMMIT_HASH: git.commitHash(),
+      COMMIT_HASH: git.commitHash(true),
       COMMIT_DATE: git.commitDate(),
     }),
   ],

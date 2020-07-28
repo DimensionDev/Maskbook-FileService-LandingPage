@@ -31,6 +31,7 @@ export default merge(configuration, {
     new HTMLPlugin({
       title: 'Maskbook File Service | Arweave',
       inject: 'head',
+      filename: 'landing-page.html',
       template: TEMPLATE_PATH,
       templateParameters: { metadata: '__METADATA__' },
     }),

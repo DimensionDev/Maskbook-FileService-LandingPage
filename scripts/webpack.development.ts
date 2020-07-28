@@ -44,6 +44,13 @@ const files: Record<string, any> = {
     link: 'https://arweave.net/3xDm5oErjbqv1hk4EeNkbcmtzRp2C3g80SB5ZOEumzw',
     signed,
   },
+  empty: {
+    name: 'random.1kib',
+    size: 1024,
+    link: 'https://arweave.net/moF2ekddWoLAAODwLQkMLDJX1nWE2D_p487zmPQ9xWQ',
+    signed: null,
+    createdAt: '2020-07-29T14:49:11.548Z',
+  },
 };
 
 const plugins = Object.keys(files).map(

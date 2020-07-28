@@ -38,7 +38,6 @@ export const useDownload = (options: DownloadOptions, deps: any[]) => {
       }
       await options.onChunk(await concat(chunks));
     } catch (error) {
-      console.log(error);
       options.onNetworkError(error);
     }
   }, deps);

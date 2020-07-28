@@ -4,11 +4,9 @@ export interface Metadata {
   name: string;
   size: number;
   link: string;
-
-  signed: [string, string];
-
-  createdAt: string;
   mime: string;
+  signed: [string, string];
+  createdAt: string;
 }
 
 const Metadata = React.createContext<Metadata | undefined>(undefined);
@@ -21,6 +19,9 @@ export const MetadataProvider: React.FC = ({ children }) => {
     element?.remove();
     setValue(JSON.parse(payload));
   }, []);
+  if (value === undefined) {
+    return null;
+  }
   return <Metadata.Provider value={value} children={children} />;
 };
 

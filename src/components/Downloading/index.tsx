@@ -9,7 +9,7 @@ import locals from './index.scss';
 import { Progress } from './Progress';
 
 const Downloading: React.FC = () => {
-  const metadata = useMetadata();
+  const meta = useMetadata()!;
   const history = useHistory();
   const location = useLocation<{ key: Uint8Array | undefined }>();
   const [startedAt, onStartedAt] = React.useState(0);
@@ -17,7 +17,7 @@ const Downloading: React.FC = () => {
   const [receivedSize, onReceivedSize] = React.useState(0);
   useDownload(
     {
-      link: metadata.link,
+      link: meta.link,
       onFileSize,
       onReceivedSize,
       onStartedAt,
@@ -26,10 +26,11 @@ const Downloading: React.FC = () => {
         try {
           const input = await Attachment.decode(key, encoded);
           history.push('/downloaded', {
-            name: metadata.name,
+            name: meta.name,
             blob: new Blob([input.block], { type: input.mime }),
           });
-        } catch {
+        } catch (error) {
+          console.error(error);
           history.push('/error', {
             type: 'save',
             message: 'Decyption failed.',
@@ -38,6 +39,7 @@ const Downloading: React.FC = () => {
         }
       },
       onNetworkError(error) {
+        console.error(error);
         history.push('/error', {
           type: 'download',
           message: error.message,

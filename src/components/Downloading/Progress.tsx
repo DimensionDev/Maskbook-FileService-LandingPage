@@ -10,9 +10,9 @@ interface Props {
 }
 
 export const Progress: React.FC<Props> = (props) => {
-  const metadata = useMetadata();
+  const meta = useMetadata()!;
   let { startedAt, fileSize: size, receivedSize: loaded } = props;
-  size = size === 0 ? metadata.size : size;
+  size = size === 0 ? meta.size : size;
   const width = (loaded / size) * 100;
   const elapsed = (Date.now() - startedAt) / 1000;
   const remaining = (size - loaded) / (elapsed ? loaded / elapsed : 0);

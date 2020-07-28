@@ -4,15 +4,15 @@ import { formatFileSize } from '../utils';
 import locals from './FileInfo.scss';
 
 export default React.memo(() => {
-  const metedata = useMetadata();
+  const meta = useMetadata();
   return (
     <section className={locals.info}>
       <i className={locals.icon} />
-      <p className={locals.name}>{metedata?.name}</p>
+      <p className={locals.name}>{meta.name}</p>
       <p className={locals.meta}>
-        <span>{formatFileSize(metedata?.size)}</span>
+        <span>{formatFileSize(meta.size)}</span>
         <span>&nbsp;&nbsp;</span>
-        <span>{formatDateTime(metedata?.createdAt)}</span>
+        <span>{formatDateTime(meta.createdAt)}</span>
       </p>
     </section>
   );

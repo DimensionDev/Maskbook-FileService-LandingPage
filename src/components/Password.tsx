@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
-import usePromise from 'react-use-promise';
 import { Metadata, useMetadata } from '../Metadata';
 import {
   base64ToUint8Array,
@@ -20,28 +19,35 @@ const Password: React.FC = () => {
   const meta = useMetadata();
   const history = useHistory();
   const [error, setError] = React.useState(MESSAGE_TRYING);
-  const [userKey, setUserKey] = React.useState(location.hash.slice(1));
-  usePromise(async () => {
-    const key = encodeText(userKey);
+  useMessage((event) => {
+    onUserKey(String(event.data));
+  });
+  useTimeout(() => {
+    setError(`${MESSAGE_TRYING} Not Found.`);
+  }, 20 * 1000);
+  React.useEffect(() => {
     if (meta.signed === null) {
       history.push('/download');
-    } else if (userKey.length === 0) {
-      return;
-    } else if (await verify(meta, key)) {
-      history.push('/downloading', { key });
     } else {
-      setError(MESSAGE_FAILED);
+      onUserKey(location.hash.slice(1));
     }
-  }, [userKey]);
-  useMessage((event) => setUserKey(String(event.data)));
-  useTimeout(() => setError(`${MESSAGE_TRYING} Not Found.`), 20 * 1000);
-
+  }, []);
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     const element = event.currentTarget.elements.namedItem(INPUT_NAME);
     if (element instanceof HTMLInputElement) {
-      setUserKey(element.value);
+      onUserKey(element.value);
+    }
+  };
+  const onUserKey = async (userKey: string) => {
+    const key = encodeText(userKey);
+    if (userKey.length === 0) {
+      return;
+    } else if (await verify(meta, key)) {
+      history.push('/downloading', { key });
+    } else {
+      setError(MESSAGE_FAILED);
     }
   };
 
