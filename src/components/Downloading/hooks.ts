@@ -1,3 +1,4 @@
+import { concatArrayBuffer } from '@dimensiondev/kit/esm/buffer';
 import usePromise from 'react-use-promise';
 
 interface DownloadOptions {
@@ -36,21 +37,9 @@ export const useDownload = (options: DownloadOptions, deps: any[]) => {
         offset += result.value.length;
         options.onReceivedSize(offset);
       }
-      await options.onChunk(await concat(chunks));
+      await options.onChunk(new Uint8Array(await concatArrayBuffer(...chunks)));
     } catch (error) {
       options.onNetworkError(error);
     }
   }, deps);
 };
-
-function concat(chunks: Uint8Array[]): Promise<Uint8Array> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.addEventListener('error', reject);
-    reader.addEventListener('load', () => {
-      // @ts-expect-error
-      resolve(new Uint8Array(reader.result));
-    });
-    reader.readAsArrayBuffer(new Blob(chunks));
-  });
-}
