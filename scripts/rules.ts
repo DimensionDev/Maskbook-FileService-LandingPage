@@ -29,6 +29,11 @@ const SCSSRule: Rule = {
   ],
 };
 
-const rules: Rule[] = [TSRule, CSSRule, SCSSRule];
+const SVGURLRule: Rule = {
+  test: /\.svg$/,
+  loader: require.resolve('svg-url-loader'),
+};
+
+const rules: Rule[] = [TSRule, CSSRule, SCSSRule, SVGURLRule];
 
 export default rules;
