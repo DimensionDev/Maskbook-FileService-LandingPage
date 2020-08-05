@@ -1,13 +1,14 @@
+import { formatFileSize } from '@dimensiondev/kit';
 import React from 'react';
+import { File } from 'react-feather';
 import { useMetadata } from '../Metadata';
-import { formatFileSize } from '../utils';
 import locals from './FileInfo.scss';
 
 export default React.memo(() => {
   const meta = useMetadata();
   return (
     <section className={locals.info}>
-      <i className={locals.icon} />
+      <File className={locals.icon} />
       <p className={locals.name}>{meta.name}</p>
       <p className={locals.meta}>
         <span>{formatFileSize(meta.size)}</span>

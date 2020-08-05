@@ -1,13 +1,10 @@
+import { encodeText, encodeArrayBuffer } from '@dimensiondev/kit';
 import classNames from 'classnames';
 import React from 'react';
+import { Info, ThumbsDown } from 'react-feather';
 import { useHistory } from 'react-router';
 import { Metadata, useMetadata } from '../Metadata';
-import {
-  base64ToUint8Array,
-  encodeText,
-  useMessage,
-  useTimeout,
-} from '../utils';
+import { base64ToUint8Array, useMessage, useTimeout } from '../utils';
 import { box, button } from './common.scss';
 import locals from './Password.scss';
 
@@ -50,7 +47,7 @@ const Password: React.FC = () => {
       setError(MESSAGE_FAILED);
     }
   };
-
+  const failed = error === MESSAGE_FAILED;
   return (
     <form className={classNames(box, locals.form)} onSubmit={onSubmit}>
       <label>
@@ -65,7 +62,10 @@ const Password: React.FC = () => {
           autoSave='off'
           autoFocus={true}
         />
-        <p data-incorrect={error.includes('incorrect')}>{error}</p>
+        <p className={failed ? locals.failed : undefined}>
+          {failed ? <ThumbsDown /> : <Info />}
+          {error}
+        </p>
       </label>
       <button className={button} type='submit'>
         Decrypt &amp; Download

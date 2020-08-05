@@ -1,6 +1,6 @@
+import { formatFileSize } from '@dimensiondev/kit';
 import React from 'react';
 import { useMetadata } from '../../Metadata';
-import { formatFileSize } from '../../utils';
 import locals from './Progress.scss';
 
 interface Props {

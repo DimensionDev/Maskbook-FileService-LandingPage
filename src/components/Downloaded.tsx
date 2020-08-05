@@ -1,13 +1,13 @@
+import {
+  detectAudioSupport,
+  detectImageSupport,
+  detectVideoSupport,
+} from '@dimensiondev/kit';
 import classNames from 'classnames';
 import React from 'react';
 import { useLocation } from 'react-router';
 import usePromise from 'react-use-promise';
 import useObjectURL from 'use-object-url';
-import {
-  detectAudioSupport,
-  detectImageSupport,
-  detectVideoSupport,
-} from '../utils';
 import { box, button } from './common.scss';
 import locals from './Downloaded.scss';
 import Preview from './Preview';
