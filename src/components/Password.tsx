@@ -1,4 +1,4 @@
-import { encodeText, encodeArrayBuffer } from '@dimensiondev/kit';
+import { encodeText } from '@dimensiondev/kit/esm/buffer';
 import classNames from 'classnames';
 import React from 'react';
 import { Info, ThumbsDown } from 'react-feather';

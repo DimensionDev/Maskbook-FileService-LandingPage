@@ -2,7 +2,7 @@ import {
   detectAudioSupport,
   detectImageSupport,
   detectVideoSupport,
-} from '@dimensiondev/kit';
+} from '@dimensiondev/kit/esm/detect';
 import classNames from 'classnames';
 import React from 'react';
 import { useLocation } from 'react-router';

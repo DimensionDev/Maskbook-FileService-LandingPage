@@ -1,4 +1,4 @@
-import { formatFileSize } from '@dimensiondev/kit';
+import { formatFileSize } from '@dimensiondev/kit/esm/file';
 import React from 'react';
 import { useMetadata } from '../../Metadata';
 import locals from './Progress.scss';
