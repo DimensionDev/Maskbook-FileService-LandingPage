@@ -57,7 +57,7 @@ const plugins = Object.keys(files).map(
   (name) =>
     new HTMLPlugin({
       filename: `${name}.html`,
-      title: 'Maskbook File Service | Arweave',
+      title: 'Mask File Service | Arweave',
       inject: 'head',
       template: TEMPLATE_PATH,
       templateParameters: { metadata: JSON.stringify(files[name]) },

@@ -29,7 +29,7 @@ export default merge(configuration, {
       cleanOnceBeforeBuildPatterns: [DIST_PATH],
     }),
     new HTMLPlugin({
-      title: 'Maskbook File Service | Arweave',
+      title: 'Mask File Service | Arweave',
       inject: 'head',
       filename: 'landing-page.html',
       template: TEMPLATE_PATH,
