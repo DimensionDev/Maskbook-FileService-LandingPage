@@ -8,7 +8,7 @@ This repo includes the "Landing Page" component of the [Maskbook](https://github
 
 ## Issues
 
-All discussions should happen at [Maskbook-Talks](https://github.com/DimensionDev/Maskbook-Talks).
+All discussions should happen at [Maskbook Discussions](https://github.com/DimensionDev/Maskbook/discussions).
 
 ## Technology Demo
 
