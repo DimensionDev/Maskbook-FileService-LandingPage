@@ -1,7 +1,7 @@
 import React from 'react';
 import locals from './index.scss';
 
-const legal = 'https://legal.maskbook.com/arweave/file-service/';
+const legal = 'https://legal.mask.io/arweave/file-service/';
 const repo = `https://github.com/DimensionDev/Maskbook-FileService-LandingPage/tree/${process.env.COMMIT_HASH}`;
 
 export default React.memo(() => (
