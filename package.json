@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@dimensiondev/common-protocols": "^1.6.0-20201027083702-d0ae6e2",
-    "@dimensiondev/kit": "0.0.0-20200805092405-83b3a99",
+    "@dimensiondev/kit": "0.0.0-20210115043954-c3b95ac",
     "@msgpack/msgpack": "^2.3.0",
     "classnames": "^2.2.6",
     "domready": "^1.0.8",
