@@ -8,7 +8,7 @@ const defaultPrivacyLink = `https://legal.mask.io/maskbook/privacy-policy-browse
 
 export default React.memo(() => {
   const meta = useMetadata();
-  const privacyLink = meta.provider === 'arweave' ? legal : defaultPrivacyLink;
+  const privacyLink = !meta.provider ? legal : meta.provider === 'arweave' ? legal : defaultPrivacyLink;
   return (
     <nav>
       <a href={privacyLink} target='_blank'>
