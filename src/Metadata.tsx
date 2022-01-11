@@ -4,6 +4,7 @@ export interface Metadata {
   name: string;
   size: number;
   link: string;
+  provider: string;
   mime: string;
   signed: [string, string];
   createdAt: string;
