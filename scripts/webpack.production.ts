@@ -35,6 +35,13 @@ export default merge(configuration, {
       template: TEMPLATE_PATH,
       templateParameters: { metadata: '__METADATA__' },
     }),
+    new HTMLPlugin({
+      title: 'Mask File Service | Arweave',
+      inject: 'head',
+      filename: 'recover.html',
+      template: TEMPLATE_PATH,
+      templateParameters: { metadata: '__METADATA__' },
+    }),
     new InlineChunkPlugin(HTMLPlugin, [/\.js$/]),
     new InlineCSSPlugin(),
     new OptimizeCSSPlugin({
