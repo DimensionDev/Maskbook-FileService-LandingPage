@@ -10,7 +10,7 @@ import locals from './base.scss';
 import { MetadataProvider } from './Metadata';
 
 ready(() => {
-  const entry = (
+  const App = (
     <MetadataProvider>
       <MemoryRouter>
         <Entry />
@@ -20,7 +20,7 @@ ready(() => {
 
   const container = document.createElement('main');
   container.className = locals.container;
-  ReactDOM.render(entry, container, () => {
+  ReactDOM.render(App, container, () => {
     document.body = document.createElement('body');
     document.body.appendChild(container);
   });
