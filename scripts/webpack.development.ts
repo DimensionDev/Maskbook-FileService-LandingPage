@@ -73,9 +73,10 @@ export default merge(configuration, {
   devServer: {
     disableHostCheck: true,
     host: '0.0.0.0',
-    hot: false,
+    hot: true,
     https: true,
     inline: false,
+    port: 5050,
   },
   plugins,
 });

@@ -14,6 +14,7 @@ const configuration: webpack.Configuration = {
     new webpack.EnvironmentPlugin({
       COMMIT_HASH: git.commitHash(true),
       COMMIT_DATE: git.commitDate(),
+      PREVIEW: process.env.PREVIEW,
     }),
   ],
 };
