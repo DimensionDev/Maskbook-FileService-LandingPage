@@ -10,12 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
+      
       - uses: actions/checkout@v2
       - name: Use Node.js LTS
         uses: actions/setup-node@v2-beta
         with:
           node-version: 16
       - uses: DimensionDev/github-token-action@latest
+      # For an unknown reason, GitHub Actions fails to install packages in case of _authToken line was added.
+      - run: cat .npmrc | head -1 > .npmrc
       - run: npm ci
       - run: npm run lint
       - run: npm run build
