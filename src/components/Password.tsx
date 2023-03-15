@@ -23,6 +23,7 @@ const Password: React.FC = () => {
     setError(`${MESSAGE_TRYING} Not Found.`);
   }, 20 * 1000);
   React.useEffect(() => {
+    debugger;
     if (meta.signed === null) {
       history.push('/download');
     } else {
@@ -75,6 +76,10 @@ const Password: React.FC = () => {
 };
 
 async function verify(meta: Metadata, fileKey: Uint8Array) {
+  // Bypass the old format
+  if (typeof meta.signed === 'string') {
+    return true;
+  }
   const [signed, keyData] = meta.signed.map(base64ToUint8Array);
   const algo: HmacImportParams = { name: 'HMAC', hash: { name: 'SHA-256' } };
   const usages: KeyUsage[] = ['sign', 'verify'];

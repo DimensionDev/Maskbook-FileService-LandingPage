@@ -6,3 +6,12 @@ export function base64ToUint8Array(input: string) {
   }
   return block;
 }
+
+const ProviderNameMap = {
+  ipfs: 'IPFS',
+  arweave: 'Arweave',
+};
+
+export function getProviderName(id: 'ipfs' | 'arweave') {
+  return ProviderNameMap[id];
+}
