@@ -11,7 +11,7 @@ export async function recoverFile(originUrl: string): Promise<Metadata> {
   const url = new URL(originUrl);
 
   // IPFS
-  if (url.hostname.includes('ipfs')) {
+  if (metadata.provider === 'ipfs') {
     const metadataLink = new URL(metadata.link);
     return {
       ...metadata,
